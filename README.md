@@ -5,15 +5,15 @@ SEDA->staged event driven architecture
 
 
 # 第3讲、
-1 RPC库：protobuf 、thrift
-2 http协议：短链接  无状态的基于请求响应的协议
+1. RPC库：protobuf 、thrift
+2. http协议：短链接  无状态的基于请求响应的协议
    websocket协议：长连接 ; 全双工的通信 即时通讯 ; 可以允许只传送数据本身 没有head ; 心跳检测
 
 
 # 第4讲、intellij安装gradle环境：
-1 下载官网的gradle包，本次使用的是gradle-4.10.2.如果版本过高会出现和intellij不兼容的问题。
-2 设置本地win10中的环境变量 用gradle -v查看成功设置后的gradle的版本
-3 在intellij的setting中搜索gradle,配置gradle-home
+1. 下载官网的gradle包，本次使用的是gradle-4.10.2.如果版本过高会出现和intellij不兼容的问题。
+2. 设置本地win10中的环境变量 用gradle -v查看成功设置后的gradle的版本
+3. 在intellij的setting中搜索gradle,配置gradle-home
 
 
 # 第5-6讲 netty执行流程分析
@@ -24,8 +24,8 @@ ch01-TestServer 实现hello world
 ch02-MyServer和MyClient
 
 netty的应用：
-支持dubbo，spark等业界开源框架的底层通信
-支持长连接的开发，在线聊天等实时通讯的场景
+1. 支持dubbo，spark等业界开源框架的底层通信
+2. 支持长连接的开发，在线聊天等实时通讯的场景
 
 
 # 第8讲 基于netty的实现多客户端连接
@@ -41,21 +41,21 @@ ch04-MyServer
 
 # 第10-11讲 基于websocket的服务器 实现长连接
 ch05-MyWebSocketServer
-轮询的形式很浪费资源，不断地去轮询，如果每次服务器没有数据发给客户端，就会浪费很多网络和计算资源。
-WebSocket实现了真正意义上的长连接，
-WebSocket客户端编写
+- 轮询的形式很浪费资源，不断地去轮询，如果每次服务器没有数据发给客户端，就会浪费很多网络和计算资源。
+- WebSocket实现了真正意义上的长连接，
+- WebSocket客户端编写
 
 
 # 第12-14讲 Protobuf--搭建环境
 ch06-ProtobufTest  Protobuf完整实例--在同一个jvm中通信
-remote method invocation远程方法调用：只在java中使用
+> remote method invocation远程方法调用：只在java中使用
 client:stub
 server:skeleton
 序列化与反序列化：编码和解码
 rpc:remote procedure call 远程过程调用：跨语言
-1 定义一个接口说明文件（idl）：描述了对象、对象成员、接口方法等一系列的信息
-2 通过rpc的编译器将说明文件编译成具体语言文件
-3 在客户端和服务器端分别引入rpc编译器所生成的文件，即可像调用本地方法一样调用远程方法
+1. 定义一个接口说明文件（idl）：描述了对象、对象成员、接口方法等一系列的信息
+2. 通过rpc的编译器将说明文件编译成具体语言文件
+3. 在客户端和服务器端分别引入rpc编译器所生成的文件，即可像调用本地方法一样调用远程方法
 
 
 # 第15讲 Protobuf与netty集成
@@ -70,28 +70,29 @@ ch08-ProtobufServer
 
 # 第17讲 Protobuf最佳实践
 一般有4个工程:
-ServerProject(引用Protobuf-Java)
-Protobuf-Java
-data.proto
-ClientProject(引用Protobuf-Java)
+- ServerProject(引用Protobuf-Java)
+- Protobuf-Java
+- data.proto
+- ClientProject(引用Protobuf-Java)
 
-使用git开发时一定会大量使用分支:
+> 使用git开发时一定会大量使用分支:
 branch：
-develop(开发)
-test(测试-给测试人员和产品经理测试用)
-product(生产)
+   develop(开发)
+   test(测试-给测试人员和产品经理测试用)
+   product(生产)
+   
 git subtree
 
 
 # 第18讲 thrift应用和开发
-1 thrift是CS架构的，客户端和服务端可以分别用不同的编程语言开发。那么，一定存在一种中间语言IDL（interface description language）来关联客户端和服务端。
-2 thrift不支持无符号的类型。因为很多语言不持持无符号类型，如Java。
-3 thrift的数据类型：byte,i16,i32,i64,duble,string
+1. thrift是CS架构的，客户端和服务端可以分别用不同的编程语言开发。那么，一定存在一种中间语言IDL（interface description language）来关联客户端和服务端。
+2. thrift不支持无符号的类型。因为很多语言不持持无符号类型，如Java。
+3. thrift的数据类型：byte,i16,i32,i64,duble,string
 thrift的容器类型：struct,enum,service,exception,list,set,map,
-4 类型定义：thrift支持typedef定义
-typedef i32 int;
-typedef i64 long;
-5 命令空间与文件包含：
-namespace 语言名 包名
-include 文件全名
-6 可选与必选：提供了2个关键词required,optional
+4. 类型定义：thrift支持typedef定义
+- typedef i32 int;
+- typedef i64 long;
+5. 命令空间与文件包含：
+- namespace 语言名 包名
+- include 文件全名
+6. 可选与必选：提供了2个关键词required,optional
