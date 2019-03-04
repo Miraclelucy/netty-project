@@ -1,0 +1,14 @@
+syntax = "proto2";
+
+package com.tenglu.ch06;
+
+option optimize_for=SPEED;
+option java_package = "com.tenglu.ch06";
+option java_outer_classname = "StudentInfo";
+
+
+message Student {
+  optional string name = 1;
+  optional int32 id = 2;
+  optional string email = 3;
+}

@@ -1,0 +1,40 @@
+syntax = "proto2";
+package com.tenglu.ch08;
+
+option optimize_for=SPEED;
+option java_package = "com.tenglu.ch08";
+option java_outer_classname = "DataInfo";
+
+message People {
+    optional string name = 1;
+    optional int32 id = 2;
+    optional string email = 3;
+}
+
+message Dog {
+    optional string name = 1;
+    optional int32 age = 2;
+}
+
+message Cat {
+    optional string name = 1;
+    optional string city = 2;
+}
+
+//这里的取名不能和java_outer_classname重复,否则编译会报错
+message MyMessage{
+    enum DataType{
+       PeopleType=1;
+       DogType=2;
+       CatType=3;
+    }
+
+    required DataType data_type=1;
+
+    oneof dataBody{
+      People people=2;
+      Dog dog=3;
+      Cat cat=4;
+    }
+
+}

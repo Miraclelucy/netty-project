@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<script>
+    var socket;
+    if(window.WebSocket){
+        socket=new WebSocket('ws://localhost:8899/ws');
+        var ta=document.getElementById("receiveMessageArea");
+        socket.onmessage=function (event) {
+            var ta=document.getElementById("receiveMessageArea");
+            ta.value=ta.value+'\n'+event.data;
+        }
+
+        socket.onopen=function (event) {
+            var ta=document.getElementById("receiveMessageArea");
+            ta.value="连接开启";
+        }
+
+        socket.onclose=function (event) {
+            var ta=document.getElementById("receiveMessageArea");
+            ta.value=ta.value+'\n'+"连接关闭";
+        }
+
+
+    }
+    else{
+        alert("浏览器不支持websocket协议");
+    }
+    
+    function send(message) {
+        if(!window.WebSocket){
+            return ;
+        }
+        else{
+            if(socket.readyState==WebSocket.OPEN){
+                socket.send(message);
+            }
+            else
+            {
+                alert("连接尚未开启");
+            }
+
+        }
+
+    }
+
+
+</script>
+<body>
+<form onsubmit="return false;">
+    <textarea type="text" id="sendMessageArea" name="sendMessageArea"  ></textarea>
+    <input type="button" value="发送消息" onclick="send(this.form.sendMessageArea.value)"></input>
+
+    <textarea type="text" id="receiveMessageArea" name="receiveMessageArea" ></textarea>
+    <input type="button" value="清空消息"></input>
+</form>
+</body>
+</html>
