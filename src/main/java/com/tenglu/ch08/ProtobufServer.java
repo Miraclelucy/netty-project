@@ -15,7 +15,7 @@ import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
 
 /**
- *  @author lushiqin 20190226
+ *  @author lushiqin 20190303
  * 《Netty源码解析-张龙》第16讲 Protobuf与netty集成 在socket上传输多种类型的protobuf数据
  *  参考帖子 https://blog.csdn.net/hami700100332/article/details/80457548
  *
