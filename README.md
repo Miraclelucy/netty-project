@@ -96,3 +96,26 @@ thrift的容器类型：struct,enum,service,exception,list,set,map,
 - namespace 语言名 包名
 - include 文件全名
 6. 可选与必选：提供了2个关键词required,optional
+
+
+# 第19讲 thrift原理与架构分析
+1. thrift的架构图：
+2. thrift传输格式：
+- TBinaryProtocol -二进制格式
+- TCompactProtocol -压缩格式
+- TJSONProtocol -JSO格式
+- TSimpleJSONProtocol-提供JSON只写协议
+- TDebugProtocol-文本格式，用于debug
+3. thrift传输方式：
+- TSocket-阻塞式socket
+- TFrameTransport-以frame为单位进行传输，非阻塞式传输中使用
+- TFileTransport-以文件形式传输
+- TMemoryTransport-将内存用于IO.JAVA实现时实际上使用了简单的ByteArrayOutputStream
+- TZlibTransport-使用zlib进行压缩，与其他传输方式联合使用。当前无JAVA实现。
+4. thrift支持的服务模型
+- TSimpleServer-简单的单线程的服务器模型，用于测试
+- TThreadPoolServer-多线程服务模型，使用标准的阻塞式IO
+- TNonblockingServer-多线程服务模型，使用非阻塞IO（必须使用TFrameTransport传输方式）
+- THsHaServer(half-sync/half-Async)-是TNonblockingServer的一种扩展（必须使用TFrameTransport传输方式）
+5. 最佳实践:
+- TCompactProtocol +TFrameTransport+THsHaServer
