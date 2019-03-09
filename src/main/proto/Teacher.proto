@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package com.tenglu.ch10;
+
+option java_multiple_files = true;
+option optimize_for=SPEED;
+option java_package = "com.tenglu.ch10";
+option java_outer_classname = "TeacherPtoro";
+
+
+service TeacherService{
+    rpc GetRealNameByUsername(TeacherRequest ) returns (TeacherResponse) { }
+}
+
+message TeacherRequest {
+    string username=1;
+}
+
+message TeacherResponse {
+    string realname=2;
+}
+
+
